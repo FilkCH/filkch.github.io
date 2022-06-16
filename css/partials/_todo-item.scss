@@ -1,0 +1,171 @@
+@import "sass-variables";
+
+.todo-item {
+    box-shadow: var(--shadow-default);
+    transition: all var(--animation-moderate), box-shadow var(--animation-slow);
+    border-radius: 1rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    width: 100%;
+
+    &[data-done="true"] {
+        box-shadow: var(--shadow-active);
+        transform: translateY(0);
+        opacity: .75;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    // START - Grid Config
+    display: grid;
+    gap: .6rem;
+    grid-template-columns: 2em 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 2em;
+    grid-template-areas: "checkbox title title title"
+                         "priority due due due"
+                         ". . edit delete";
+
+    @media only screen and (min-width: $mobile-breakpoint) {
+        grid-template-columns: 3em 1fr 1fr 1fr 3em 3em;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "checkbox title title title title title"
+                             "priority due due due edit delete";
+    }
+
+    h2 {
+        grid-area: title;
+        align-self: center;
+    }
+    .status {
+        grid-area: checkbox;
+        place-self: center;
+    }
+    .priority {
+        grid-area: priority;
+        place-self: center;
+    }
+    .due-date {
+        grid-area: due;
+        align-self: center;
+    }
+    .edit {
+        grid-area: edit;
+        place-self: center;
+    }
+    .delete {
+        grid-area: delete;
+        place-self: center;
+    }
+    // END - Grid Config
+
+    &:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-.2em);
+        transition: all var(--animation-moderate);
+        background-color: hsl(280deg 100% 80% / 7%)
+    }
+
+    .priority {
+        width: 1.75em;
+        height: 1.75em;
+        border-radius: 50%;
+        background-color: var(--color-bg-primary);
+        box-shadow: inset 7px 7px 10px hsl(0deg 0% 0% / 20%),
+                    inset -5px -5px 10px hsl(0deg 0% 100% / 5%);
+        position: relative;
+        transition: all var(--animation-default);
+
+        &::before {
+            content: "";
+            width: .9em;
+            height: .9em;
+            background: var(--color-accent-secondary);
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transition: all var(--animation-moderate);
+            transform: translate(-50%, -50%);
+            box-shadow: 2px 2px 3px hsl(0deg 0% 0% / 30%),
+                        inset 4px 4px 4px hsl(0deg 0% 100% / 20%);
+        }
+
+        &[data-priority="3"]::before {
+            width: .5em;
+            height: .5em;
+            background: var(--color-accent-quaternary);
+        }
+        &[data-priority="2"]::before {
+            width: .8em;
+            height: .8em;
+            background: var(--color-accent-quinary);
+        }
+        &[data-priority="1"]::before {
+            width: 1.2em;
+            height: 1.2em;
+            background: var(--color-accent-senary);
+        }
+    }
+
+    h2 {
+        font-size: clamp(1.2em, 3vw, 1.6em);
+        hyphens: auto;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 1.35em;
+        font-weight: 800;
+        text-shadow: -1px -1px 2px hsl(0deg 0% 0% / 20%),
+                    1px 1px 2px hsl(0deg 0% 100% / 30%);
+    }
+
+    &[data-done="true"] h2 {
+        text-decoration: line-through;
+    }
+
+    .tool {
+        opacity: 1;
+        transform: scale(1);
+        transition: all var(--animation-moderate);
+        cursor: pointer;
+
+        @media only screen and (min-width: $mobile-breakpoint) {
+            opacity: 0;
+            transform: scale(.8);
+        }
+
+        span {
+            box-shadow: var(--shadow-default);
+            background: var(--gradient-default);
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all var(--animation-moderate);
+
+            &:hover {
+                background: var(--gradient-hover);
+                box-shadow: var(--shadow-hover);
+                transform: translateY(-.2em);
+            }
+
+            &:active,
+            &:focus,
+            &:focus-within {
+                background: var(--gradient-active);
+                box-shadow: var(--shadow-active);
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &:hover {
+        .tool {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    input[type="checkbox"] {
+        cursor: default;
+    }
+}

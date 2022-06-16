@@ -1,0 +1,51 @@
+:root {
+    // Animations
+    --animation-default:    .75s cubic-bezier(1, 0, 0, 1);
+    --animation-quick:      .2s cubic-bezier(1, 0, 0, 1);
+    --animation-moderate:   .3s ease;
+    --animation-slow:       1s ease;
+
+    // Neomorphic Gradients
+    --gradient-default:     linear-gradient(-45deg, hsl(0deg 0% 0% / 3%), hsl(0deg 0% 100% / 3%));
+    --gradient-hover:       linear-gradient(-45deg, hsl(0deg 0% 0% / 8%), hsl(0deg 0% 100% / 8%));
+    --gradient-active:      linear-gradient(-45deg, hsl(0deg 0% 0% / 8%), hsl(0deg 0% 100% / 8%));
+
+    // Neomorphic Shadows
+    --shadow-default:       5px 5px 10px hsl(0deg 0% 0% / 15%),
+                            -5px -5px 10px hsl(0deg 0% 100% / 5%),
+                            3px 3px 5px hsl(0deg 0% 0% / 0%),
+                            inset 2px 2px 7px hsl(0deg 0% 100% / 10%),
+                            inset -2px -2px 7px hsl(0deg 0% 0% / 50%);
+
+    --shadow-hover:         8px 8px 20px hsl(0deg 0% 0% / 25%),
+                            -5px 0px 10px hsl(0deg 0% 100% / 5%),
+                            3px 3px 5px hsl(0deg 0% 0% / 15%),
+                            inset 2px 2px 7px hsl(0deg 0% 100% / 10%),
+                            inset -2px -2px 7px hsl(0deg 0% 0% / 50%);
+
+    --shadow-active:        3px 3px 3px hsl(0deg 0% 100% / 3%),
+                            -5px -5px 10px hsl(0deg 0% 0% / 15%);
+}
+
+.light-mode {
+    --gradient-hover:       linear-gradient(-45deg, hsl(0deg 0% 0% / 0%), hsl(0deg 0% 100% / 20%));
+
+    --shadow-default:       5px 5px 10px hsl(0deg 0% 0% / 15%),
+                            -5px -5px 10px hsl(0deg 0% 100% / 30%),
+                            3px 3px 5px hsl(0deg 0% 0% / 0%),
+                            inset 2px 2px 7px hsl(0deg 0% 100% / 30%),
+                            inset -2px -2px 7px hsl(0deg 0% 0% / 10%);
+
+    --shadow-hover:         8px 8px 15px hsl(0deg 0% 0% / 10%),
+                            -5px 0px 10px hsl(0deg 0% 100% / 5%),
+                            3px 3px 5px hsl(0deg 0% 0% / 10%),
+                            inset 2px 2px 7px hsl(0deg 0% 100% / 30%),
+                            inset -2px -2px 7px hsl(0deg 0% 0% / 10%);
+
+    --shadow-active:        3px 3px 3px hsl(0deg 0% 100% / 30%),
+                            -5px -5px 10px hsl(0deg 0% 0% / 15%);
+}
+
+.hidden {
+    display: none !important;
+}
