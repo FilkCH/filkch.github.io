@@ -61,7 +61,6 @@ const dataFormElements = document.querySelector('[data-element="form"]').element
 
 const todoList = document.querySelector('[data-element="todolist"]');
 const addButton = document.querySelector('[data-action="add-data"]');
-const settingsButton = document.querySelector('[data-action="settings-data"]');
 const saveButton = document.querySelector('[data-action="save"]');
 const closeButton = document.querySelector('[data-action="close"]');
 const themeToggler = document.querySelector('[data-action="theme-toggler"]');
@@ -199,10 +198,6 @@ addButton.addEventListener('click', () => {
     resetInputFields();
     toggleVisiblity(dataPopup, defaultHiddenClass);
     titleField.focus();
-});
-
-settingsButton.addEventListener('click', () => {
-    toggleVisiblity(settingsPopup, defaultHiddenClass);
 });
 
 themeToggler.addEventListener('click', () => {
