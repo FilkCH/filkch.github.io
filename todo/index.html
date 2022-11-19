@@ -1,0 +1,129 @@
+<!doctype html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="color-scheme" content="dark light">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@900&family=Nunito:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/compiled.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#1f1b32">
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1f1b32">
+    <meta name="msapplication-config" content="./images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Todo App</title>
+</head>
+
+<body>
+
+<header>
+    <h1 class="logo">Todo</h1>
+
+    <div class="button-box">
+        <button data-action="theme-toggler"
+                class="btn-round btn--theme"
+                role="button"
+                title="Switch between dark and light mode">
+            <div class="rotor">
+                <span class="material-icons md-36">nightlight_round</span>
+                <span class="material-icons md-36">light_mode</span>
+            </div>
+        </button>
+
+        <button data-action="add-data"
+                data-toggle-visibility="data-popup"
+                class="btn-round btn__glow"
+                role="button"
+                title="Add a new todo item">
+            <span class="material-icons md-36">add</span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <section data-name="data-popup" class="data-popup hidden">
+        <article>
+            <form action="#" data-element="form">
+                <label for="title">
+                    <span class="label">Titel</span>
+                    <input type="text" id="title" name="title" placeholder="Bitte einen Titel eingeben..." >
+                </label>
+
+                <label for="duedate">
+                    <span class="label">Fällig am</span>
+                    <input type="date" id="duedate" name="duedate">
+                </label>
+
+                <span class="label">Priorität</span>
+                <div class="priority-switch">
+                    <input name="priority" value="3" id="three" type="radio" checked>
+                    <label for="three" class="priority-switch__label">3</label>
+
+                    <input name="priority" value="2" id="two" type="radio">
+                    <label for="two" class="priority-switch__label">2</label>
+
+                    <input name="priority" value="1" id="one" type="radio">
+                    <label for="one" class="priority-switch__label" >1</label>
+
+                    <i class="priority-switch__indicator"></i>
+                </div>
+
+                <label for="duedate">
+                    <span class="label">Erledigt</span>
+                    <span><input type="checkbox" id="done" name="done"></span>
+                </label>
+
+                <div class="buttons">
+                    <button data-action="save" data-toggle-visibility="data-popup" class="btn-round" type="submit">
+                        <span class="material-icons md-36">done</span>
+                    </button>
+                    <button data-action="close" data-toggle-visibility="data-popup" class="btn-round">
+                        <span class="material-icons md-36">close</span>
+                    </button>
+                </div>
+                <input type="hidden" id="setid" name="setid" value="">
+            </form>
+        </article>
+    </section>
+
+    <script id="todo-item-template" type="text/x-handlebars-template">
+        {{#each this}}
+            <article data-done="{{done}}" data-creation-date="{{creationDate}}" class="todo-item">
+                <h2>{{title}}</h2>
+                <span class="due-date">{{showNiceDate dueDate}}</span>
+                <div data-done="{{done}}" class="status"><input type="checkbox" name="checkbox" disabled {{boxChecker done}}></div>
+                <div class="priority" data-priority="{{priority}}"></div>
+                <div class="tool edit" data-action="edit" data-toggle-visibility="data-popup"><span class="material-icons md-24" title="Klicken um die Notiz zu bearbeiten">edit</span></div>
+                <div class="tool delete" data-action="delete"><span class="material-icons md-24" title="Klicken um die Notiz zu löschen">delete</span></div>
+            </article>
+        {{else}}
+            <div class="no-notes">
+                <span class="material-icons">sentiment_very_satisfied</span>
+                Aktuell keine Pendenzen vorhanden.
+            </div>
+        {{/each}}
+    </script>
+
+    <section class="todos" data-element="todolist"></section>
+</main>
+
+<footer>
+    &copy; 2022 - Philip Park
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
+<script src="js/main.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+:root {
+    --color-bg-primary:         hsl(250deg 30% 15%);
+    --color-contrast-primary:   hsl(50deg 100% 80%);
+    --color-accent-muted:       hsl(250deg 5% 45%);
+    --color-accent-primary:     hsl(190deg 100% 40%);
+    --color-accent-secondary:   hsl(240deg 50% 60%);
+    --color-accent-tertiary:    hsl(340deg 55% 50%);
+    --color-accent-quaternary:  hsl(95deg 75% 40%);
+    --color-accent-quinary:     hsl(35deg 100% 50%);
+    --color-accent-senary:      hsl(355deg 100% 55%);
+}
+
+.light-mode {
+    --color-bg-primary:         hsl(50deg 100% 80%);
+    --color-contrast-primary:   hsl(250deg 30% 15%);
+}
